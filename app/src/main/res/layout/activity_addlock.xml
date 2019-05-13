@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".smartlock.Activity.AddlockActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+                <ImageButton
+                    android:onClick="backLast"
+                    android:id="@+id/imbtn_remoteopen_back"
+                    android:scaleType="fitStart"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:src="@mipmap/back1" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="激活锁"
+                    android:textColor="@color/text_menu"
+                    android:textSize="18sp" />
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:id="@+id/login_form"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/login_logo"
+            android:background="@drawable/my_item"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_workername"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingLeft="6sp"
+                android:text="锁编号"
+                android:textColor="@color/text_black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/et_locknumber"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="-1dp"
+                android:layout_marginBottom="-1dp"
+                android:layout_weight="3"
+                android:background="@drawable/my_item1"
+                android:gravity="center"
+                android:hint="请输入锁的编号"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:textColor="@color/text_black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/login_logo"
+            android:layout_gravity="center"
+            android:background="@drawable/my_item"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_below="@+id/login_logo"
+                android:layout_alignParentLeft="true"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingLeft="6sp"
+                android:text="激活码"
+                android:textColor="@color/text_black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/et_activecode"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="-1dp"
+                android:layout_marginBottom="-1dp"
+                android:layout_weight="3"
+                android:background="@drawable/my_item1"
+                android:gravity="center"
+                android:hint="请输入激活码"
+                android:textSize="18sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:textColor="@color/text_black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/login_logo"
+            android:layout_gravity="center"
+            android:background="@drawable/my_item"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_below="@+id/login_logo"
+                android:layout_alignParentLeft="true"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingLeft="6sp"
+                android:text="经度"
+                android:textColor="@color/text_black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/et_add_longitude"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="-1dp"
+                android:layout_marginBottom="-1dp"
+                android:layout_weight="3"
+                android:background="@drawable/my_item1"
+                android:gravity="center"
+                android:hint="经度"
+                android:textSize="18sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:textColor="@color/text_black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/login_logo"
+            android:layout_gravity="center"
+            android:background="@drawable/my_item"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_below="@+id/login_logo"
+                android:layout_alignParentLeft="true"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingLeft="6sp"
+                android:text="纬度"
+                android:textColor="@color/text_black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/et_add_latitude"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="-1dp"
+                android:layout_marginBottom="-1dp"
+                android:layout_weight="3"
+                android:background="@drawable/my_item1"
+                android:gravity="center"
+                android:hint="请输入激活码"
+                android:textSize="18sp" />
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center">
+
+            <Button
+                android:onClick="activeLock"
+                android:id="@+id/btn_active"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/btn_cancel"
+                android:background="@drawable/btn"
+                android:text="激活"
+                android:textColor="#ffffff"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

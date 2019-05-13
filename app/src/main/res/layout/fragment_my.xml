@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" >
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="@string/title_my"
+                android:textColor="@color/text_menu"
+                />
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/my_item"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:src="@mipmap/kehu" />
+
+        <TextView
+            android:id="@+id/tv_recy_item0"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:paddingLeft="0dp"
+            android:text="ID"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/my_item"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:src="@mipmap/my1" />
+
+        <TextView
+            android:id="@+id/tv_recy_item"
+            style="@style/my_list"
+            android:text="ID" />
+
+        <TextView
+            android:id="@+id/tv_recy_item1"
+            style="@style/my_list1"
+            android:text="姓名" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/my_item"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:src="@mipmap/wokernum" />
+
+        <TextView
+            style="@style/my_list"
+            android:text="工号" />
+
+        <TextView
+            android:id="@+id/tv_recy_item2"
+            style="@style/my_list1"
+            android:text="工号" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/my_item"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:src="@mipmap/my1" />
+
+        <TextView
+            style="@style/my_list"
+            android:text="姓名" />
+
+        <TextView
+            android:id="@+id/tv_recy_item3"
+            style="@style/my_list1"
+            android:text="姓名" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/my_item"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:src="@mipmap/gender" />
+
+        <TextView
+            style="@style/my_list"
+            android:text="性别" />
+
+        <TextView
+            android:id="@+id/tv_recy_item4"
+            style="@style/my_list1"
+            android:text="姓名" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/my_item"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:src="@mipmap/birth" />
+
+        <TextView
+            style="@style/my_list"
+            android:text="出生日期" />
+
+        <TextView
+            android:id="@+id/tv_recy_item5"
+            style="@style/my_list1"
+            android:text="姓名" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/my_item"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:src="@mipmap/idcard" />
+
+        <TextView
+            style="@style/my_list"
+            android:text="身份证号码" />
+
+        <TextView
+            android:id="@+id/tv_recy_item6"
+            style="@style/my_list1"
+            android:text="姓名" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/my_item"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:src="@mipmap/phone" />
+
+        <TextView
+            style="@style/my_list"
+            android:text="手机号码" />
+
+        <TextView
+            android:id="@+id/tv_recy_item7"
+            style="@style/my_list1"
+            android:text="姓名" />
+    </LinearLayout>
+
+    <Button
+        android:drawablePadding="@dimen/list_item_spacing"
+        android:id="@+id/btn_my_modify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/my_item"
+        android:drawableLeft="@mipmap/set2"
+        android:drawableRight="@mipmap/right"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="修改个人信息"
+        android:textColor="@color/text_black"
+        android:textSize="16sp" />
+    <Button
+        android:drawablePadding="@dimen/list_item_spacing"
+        android:id="@+id/btn_set_psw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/my_item"
+        android:drawableLeft="@mipmap/set2"
+        android:drawableRight="@mipmap/right"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="修改密码"
+        android:textColor="@color/text_black"
+        android:textSize="16sp" />
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/my_item_btn"
+        android:gravity="center"
+        android:text="退出登录"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

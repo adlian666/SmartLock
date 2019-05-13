@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <ImageButton
+                android:id="@+id/imbtn_blueopen_back"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:onClick="backLast"
+                android:scaleType="fitStart"
+                android:src="@mipmap/back1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="修改个人信息"
+                android:textColor="@color/text_menu"
+                android:textSize="18sp" />
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/my_item"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/my_modify"
+                    android:text="姓名" />
+
+                <EditText
+                    android:id="@+id/et_recy_wokername"
+                    style="@style/my_modify1"
+                    android:background="@drawable/my_item"
+                    android:text="姓名" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/my_item"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    style="@style/my_modify"
+                    android:layout_gravity="center_vertical"
+                    android:text="性别" />
+
+                <RadioGroup
+                    android:id="@+id/rg_tab_bar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_weight="5"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rbtn_recy_male"
+                        style="@style/my_modify1"
+                        android:background="@drawable/my_item"
+                        android:text="男" />
+
+                    <RadioButton
+                        android:id="@+id/rbtn_recy_famale"
+                        style="@style/my_modify1"
+                        android:background="@drawable/my_item"
+                        android:text="女" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/my_item"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    style="@style/my_modify"
+                    android:text="出生日期" />
+
+                <Button
+                    android:id="@+id/btn_recy_date"
+                    style="@style/my_modify1"
+                    android:background="@drawable/my_item"
+                    android:text="请选择日期" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/my_item"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    style="@style/my_modify"
+                    android:text="身份证号码" />
+
+                <EditText
+                    android:id="@+id/et_recy_idcard"
+                    style="@style/my_modify1"
+                    android:background="@drawable/my_item"
+                    android:text="姓名" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/my_item"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    style="@style/my_modify"
+                    android:text="手机号码" />
+
+                <EditText
+                    android:id="@+id/et_recy_phone"
+                    style="@style/my_modify1"
+                    android:background="@drawable/my_item"
+                    android:text="" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_modify_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/my_item_btn"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="提交"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".smartlock.Activity.MainActivity">
+
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+
+        <RelativeLayout
+            android:id="@+id/main_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+
+        </RelativeLayout>
+
+        <RadioGroup
+
+            android:id="@+id/rg_tab_bar"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+
+            >
+
+            <RadioButton
+                android:id="@+id/tab_btn_home"
+                style="@style/tab_menu_item"
+                android:drawableTop="@drawable/tab_home_icon"
+                android:gravity="center"
+
+                android:text="首页" />
+
+            <RadioButton
+                android:id="@+id/tab_btn_msg"
+                style="@style/tab_menu_item"
+                android:drawableTop="@drawable/tab_msg_icon"
+                android:gravity="center"
+                android:text="消息" />
+
+            <RadioButton
+                android:id="@+id/tab_btn_my"
+                style="@style/tab_menu_item"
+                android:drawableTop="@drawable/tab_my_icon"
+                android:gravity="center"
+                android:text="我的" />
+
+
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:background="#00000000"
+            android:orientation="horizontal">
+
+            <RadioGroup
+
+                android:id="@+id/rg_tab_bar1"
+                android:layout_width="match_parent"
+                android:layout_height="50sp"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+
+                >
+
+                <RadioButton
+                    android:id="@+id/tab_btn_home1"
+                    style="@style/tab_menu_item"
+
+                    android:background="#00000000"
+                    android:gravity="center" />
+
+                <RadioButton
+                    android:id="@+id/tab_btn_msg1"
+                    style="@style/tab_menu_item"
+
+                    android:background="#00000000"
+
+                    android:gravity="center" />
+
+                <RadioButton
+                    android:id="@+id/tab_btn_my1"
+                    style="@style/tab_menu_item"
+                    android:background="#00000000"
+                    android:gravity="center" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/div_tab_bar"
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:layout_above="@id/rg_tab_bar" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/ly_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/div_tab_bar"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp">
+
+        </android.support.v4.view.ViewPager>
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

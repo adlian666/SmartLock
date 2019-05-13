@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:background="@drawable/my_item"
+        android:id="@+id/favorite"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_favorite"
+            android:layout_width="match_parent"
+            android:layout_height="250sp"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:text="Welcome!"
+            android:textColor="@color/text_black"
+            android:textSize="30sp" />
+
+        <RelativeLayout
+            android:background="@drawable/my_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tv_favorite">
+
+            <ImageView
+                android:id="@+id/imageButton"
+                android:layout_width="60sp"
+                android:layout_height="60sp"
+                android:src="@mipmap/list1"
+                android:scaleType="centerInside"/>
+            <Button
+                android:id="@+id/tv_list"
+                android:layout_width="match_parent"
+                android:layout_height="60sp"
+                android:textColor="@color/text_black"
+                android:layout_toRightOf="@+id/imageButton"
+                android:background="#FFFFFF"
+                android:text="列表形式"
+                android:textSize="30sp"
+                android:onClick="btn_list"/>
+
+            <ImageView
+                android:id="@+id/imageButton1"
+                android:layout_width="60sp"
+                android:layout_height="60sp"
+                android:layout_below="@+id/imageButton"
+                android:src="@mipmap/map1" />
+
+            <Button
+                android:id="@+id/tv_list1"
+                android:layout_width="match_parent"
+                android:layout_height="60sp"
+                android:layout_below="@+id/tv_list"
+                android:layout_toRightOf="@+id/imageButton1"
+                android:background="#FFFFFF"
+                android:text="地图形式"
+                android:textSize="30sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".smartlock.Activity.OpenLockActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <ImageButton
+                    android:onClick="btn_back"
+                    android:id="@+id/imbtn_lockinfo_back"
+                    android:scaleType="fitStart"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:src="@mipmap/back1" />
+                <TextView
+                    android:id="@+id/tv_openlock_title"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/text_menu"
+                    android:textSize="18sp" />
+
+                <ImageButton
+                    android:clickable="true"
+                    android:id="@+id/imbtn_lockinfo"
+                    android:scaleType="centerInside"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:src="@mipmap/set1" />
+
+            </LinearLayout>
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+    <LinearLayout
+android:layout_marginTop="100dp"
+        android:background="@drawable/my_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:background="@drawable/my_item"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/blue_open"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:background="#00000000"
+                android:drawableRight="@mipmap/key2"
+                android:drawablePadding="0dp"
+                android:text="蓝牙开锁" />
+
+            <ImageButton
+                android:id="@+id/img_setBluePsw"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="#00000000"
+                android:scaleType="centerInside"
+                android:src="@mipmap/more2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="@drawable/my_item"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal">
+
+            <Button
+
+                android:id="@+id/btn_remote_open"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:background="#00000000"
+                android:drawableRight="@mipmap/key2"
+                android:drawablePadding="0dp"
+                android:text="远程开锁" />
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="#00000000"
+                android:scaleType="centerInside"
+                android:src="@mipmap/more2" />
+        </LinearLayout>
+        <LinearLayout
+            android:background="@drawable/my_item"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_setlock"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:paddingLeft="50dp"
+                android:gravity="center_vertical"
+                android:text="启用/停用锁"
+
+                android:textColor="@color/colorPrimaryDark" />
+
+            <Switch
+                android:switchMinWidth="55dp"
+                android:id="@+id/switch_open"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:paddingRight="50dp"
+                android:gravity="center_vertical"
+                android:textOff="停用"
+                android:textOn="启用" />
+
+        </LinearLayout>
+    </LinearLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
