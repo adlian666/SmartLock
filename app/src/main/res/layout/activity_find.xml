@@ -64,7 +64,7 @@
                 android:drawablePadding="3dp"
                 android:hint="请输入查找的智能锁编号或昵称"
                 android:inputType="text"
-                android:maxLength="20"
+                android:maxLength="50"
                 android:maxLines="1"
                 android:padding="8dp"
                 android:textSize="12sp" />

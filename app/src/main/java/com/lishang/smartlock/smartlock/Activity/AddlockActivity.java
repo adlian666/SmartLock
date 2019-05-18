@@ -75,7 +75,8 @@ public class AddlockActivity extends Activity {
     }
 
     public void okHttp() {
-
+        lockNumber = et_locknumber.getText().toString();
+        activeCode = et_activecode.getText().toString();
         //1.拿到httpClient对象
         OkHttpClient okHttpClient = new OkHttpClient();
         //2.构造request

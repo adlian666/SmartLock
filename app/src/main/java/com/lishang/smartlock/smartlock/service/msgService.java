@@ -24,7 +24,9 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.lishang.smartlock.R;
+import com.lishang.smartlock.smartlock.Activity.LoginActivity;
 import com.lishang.smartlock.smartlock.Activity.MainActivity;
+import com.lishang.smartlock.smartlock.Activity.WelcomeActivity;
 import com.lishang.smartlock.smartlock.badgenumberlibrary.BadgeNumberManager;
 import com.lishang.smartlock.smartlock.badgenumberlibrary.BadgeNumberManagerXiaoMi;
 import com.lishang.smartlock.smartlock.badgenumberlibrary.MobileBrand;
@@ -34,6 +36,7 @@ import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -41,6 +44,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 import static android.os.Build.ID;
 import static android.provider.ContactsContract.Intents.Insert.NAME;
@@ -55,7 +64,7 @@ public class msgService extends Service {
     public List <Map <String, Object>> list = new ArrayList <>();
     int accountId;
     public int id = 0;
-    Boolean ck_remember_psw;
+    Boolean ck_remember_psw;private String account, state, msg, SmartLockId;
     private static final String ID = "PUSH_NOTIFY_ID";
     private static final String NAME = "PUSH_NOTIFY_NAME";WebSocketClient mWebSocketClient = null;
     @Override
@@ -176,6 +185,7 @@ public class msgService extends Service {
                         NotificationManager notificationManager = (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
                         NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext());
                         Intent intent1 = new Intent(getContext(), MainActivity.class);
+                        okhttp();
                         PendingIntent pendingIntent = PendingIntent.getActivity(getContext(), 0, intent1, 0);
                         //安卓8.0以上版本
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -245,5 +255,50 @@ public class msgService extends Service {
         Toast.makeText(getContext(), "设置桌面角标成功", Toast.LENGTH_SHORT).show();
 
     }
+    private void okhttp() {
 
+        OkHttpClient okHttpClient = new OkHttpClient();
+        String server = pref.getString("server", "");
+        String  port = pref.getString("port", "");
+        String workername = pref.getString("et_workername", "");
+        String password = pref.getString("et_password", "");
+        //1.拿到httpClient对象
+        //2.构造request
+        Request.Builder builder = new Request.Builder();
+        Request request = builder
+                .url(server + ":" + port + "/login/doLogin?userName=" + workername + "&password=" + password + "&captcha=9ga5")
+                .get()
+                .build();
+
+        //3.将request封装成call
+        Call call = okHttpClient.newCall(request);
+        //4.执行call
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure( Call call, IOException e ) {
+                        Toast.makeText(getContext(), "无法连接服务器！", Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onResponse( Call call, Response response ) throws IOException {
+               String  res = response.body().string();
+                        JSONObject jsonObject = JSON.parseObject(res);
+
+                        state = jsonObject.getString("state");
+                        msg = jsonObject.getString("msg");
+                        if (state.equals("ok")) {
+                            JSONObject jsonObject1 = jsonObject.getJSONObject("loginAccount");
+                            SmartLockId = jsonObject.getString("SmartLockId");
+                            accountId = (int) jsonObject1.get("id");
+                            mEditor.putString("SmartLockId", SmartLockId);
+                            mEditor.putInt("accountId", accountId);
+                            mEditor.commit();
+                        } else if (state.equals("fail")) {
+                            //子线程中弹出土司
+                            Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+                        }
+
+            }
+
+        });
+    }
 }

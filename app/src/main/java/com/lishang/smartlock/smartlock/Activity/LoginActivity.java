@@ -147,16 +147,19 @@ public class LoginActivity extends Activity {
 
             }
             @Override
+
             public void onResponse( Call call, Response response ) throws IOException {
+
                 res = response.body().string();
+                Log.i("LoginActicity",res);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         JSONObject jsonObject = JSON.parseObject(res);
-                        JSONObject jsonObject1 = jsonObject.getJSONObject("loginAccount");
                         state = jsonObject.getString("state");
-                        msg = jsonObject.getString("msg");
-                        if (state.equals("ok")) {
+                        if ((!state.isEmpty())&&state.equals("ok")){
+                            JSONObject jsonObject1 = jsonObject.getJSONObject("loginAccount");
+                            msg = jsonObject.getString("msg");
                             SmartLockId = jsonObject.getString("SmartLockId");
                             accountId = (int) jsonObject1.get("id");
                             mEditor.putString("SmartLockId", SmartLockId);
@@ -168,14 +171,16 @@ public class LoginActivity extends Activity {
                             startActivity(intent);
                             finish();
                         } else if (state.equals("fail")) {
+
+                            msg = jsonObject.getString("msg");
                             //子线程中弹出土司
                             Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
                         } else {
+                            msg = jsonObject.getString("msg");
                             Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
-
             }
 
         });

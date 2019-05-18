@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.lishang.smartlock.R;
 import com.lishang.smartlock.smartlock.JavaBean.StatusUtils;
 
@@ -132,8 +133,8 @@ public class BluetoothOpenActivity extends Activity {
 //找到设备
             if (BluetoothDevice.ACTION_FOUND.equals(action)) {
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                Log.i("TAG4", "find device:" + device.getName() + device.getAddress());
-                if (("" + device.getName()).equals(name)) {
+                Log.i("TAG4", "find device:" + name + device.getAddress());
+                if (("" + device.getName()).equals(device.getName())) {
                     // 搜索蓝牙设备的过程占用资源比较多，一旦找到需要连接的设备后需要及时关闭搜索
                     mAdapter.cancelDiscovery();
                     // 获取蓝牙设备的连接状态
@@ -159,8 +160,8 @@ public class BluetoothOpenActivity extends Activity {
                                 Log.i("TAG7", "已配对");
                                 connect(device);
                                 new WriteTask("").start();
-                                //Toast.makeText(BluetoothOpenActivity.this, "开锁中请稍后。。。", Toast.LENGTH_SHORT).show();
-                                //setPsw();
+                                Toast.makeText(BluetoothOpenActivity.this, "开锁中请稍后。。。", Toast.LENGTH_SHORT).show();
+
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -183,7 +184,60 @@ public class BluetoothOpenActivity extends Activity {
         //进页面时加载历史消息
         okHttp1(id);
     }
+    //远程
+    /*public void okHttp() {
+        //1.拿到httpClient对象
+        OkHttpClient okHttpClient = new OkHttpClient();
+        //2.构造request
+        Request.Builder builder = new Request.Builder();
+        Request request = builder
+                .url(server + ":" + port + "/app/lock/open?id=" + id)
+                .addHeader("cookie", "SmartLockId=" + cookie)
+                .get()
+                .build();
+        //3.将request封装成call
+        Call call = okHttpClient.newCall(request);
 
+        //4.执行call
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure( Call call, IOException e ) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                    }
+                });
+
+            }
+
+            @Override
+            public void onResponse( Call call, Response response ) throws IOException {
+                res = response.body().string();
+                Log.i("TAG2", res);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.i("TAG2", "AAAAAA");
+                        JSONObject jsonObject = JSON.parseObject(res);
+                        msg = jsonObject.getString("msg");
+                        state = jsonObject.getString("state");
+                        if (state.equals("ok")) {
+
+                            Toast.makeText(BluetoothOpenActivity.this, "开锁成功!", Toast.LENGTH_SHORT).show();
+
+                        } else {
+
+                            Toast.makeText(BluetoothOpenActivity.this, msg, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+            }
+
+        });
+
+    }*/
     private void okHttp1( Integer id ) {
         //1.拿到httpClient对象
         OkHttpClient okHttpClient = new OkHttpClient();

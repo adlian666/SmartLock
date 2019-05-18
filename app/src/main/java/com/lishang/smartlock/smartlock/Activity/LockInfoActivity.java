@@ -1,11 +1,13 @@
 package com.lishang.smartlock.smartlock.Activity;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -77,43 +79,7 @@ public class LockInfoActivity extends Activity {
         btn_modify_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick( View v ) {
-                //1.拿到httpClient对象
-                OkHttpClient okHttpClient = new OkHttpClient();
-                //2.构造request
-                Request.Builder builder = new Request.Builder();
-                Request request = builder
-                        .url(server + ":" +  port +"/app/lock/setUseStatusDiscarded?id=" + id)
-                        .addHeader("cookie", "SmartLockId=" + cookie)
-                        .get()
-                        .build();
-                //3.将request封装成call
-                Call call = okHttpClient.newCall(request);
-                //4.执行call
-                call.enqueue(new Callback() {
-                    @Override
-                    public void onFailure( Call call, IOException e ) {
-                        Looper.prepare();
-                        Toast.makeText(LockInfoActivity.this, msg, Toast.LENGTH_SHORT).show();
-                        Looper.loop();
-                    }
-                    @Override
-                    public void onResponse( Call call, Response response ) throws IOException {
-                        res = response.body().string();
-                        JSONObject jsonObject = JSON.parseObject(res);
-                        msg = jsonObject.getString("msg");
-                        state = jsonObject.getString("state");
-                        if (state.equals("ok")) {
-                            Looper.prepare();
-                            Toast.makeText(LockInfoActivity.this, msg, Toast.LENGTH_SHORT).show();
-                            Looper.loop();
-                        } else {
-                            Looper.prepare();
-                            Toast.makeText(LockInfoActivity.this, msg, Toast.LENGTH_SHORT).show();
-                            Looper.loop();
-                        }
-                    }
-
-                });
+                showdialog();
             }
 
         });
@@ -230,5 +196,72 @@ public class LockInfoActivity extends Activity {
     }
     public void btn_back5( View view ) {
         LockInfoActivity.this.finish();
+    }
+    public void showdialog(){
+        //    通过AlertDialog.Builder这个类来实例化我们的一个AlertDialog的对象
+        AlertDialog.Builder builder = new AlertDialog.Builder(LockInfoActivity.this);
+        //    设置Title的图标
+        builder.setIcon(R.mipmap.close);
+        //    设置Title的内容
+        builder.setTitle("废弃锁");
+        //    设置Content来显示一个信息
+        builder.setMessage("确定废弃当前锁吗？");
+        //    设置一个PositiveButton
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick( DialogInterface dialog, int which ) {
+                discard();
+            }
+        });
+        //    设置一个NegativeButton
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick( DialogInterface dialog, int which ) {
+
+            }
+        });
+
+        //    显示出该对话框
+        builder.show();
+    }
+    public void discard(){
+        //1.拿到httpClient对象
+        OkHttpClient okHttpClient = new OkHttpClient();
+        //2.构造request
+        Request.Builder builder = new Request.Builder();
+        Request request = builder
+                .url(server + ":" +  port +"/app/lock/setUseStatusDiscarded?id=" + id)
+                .addHeader("cookie", "SmartLockId=" + cookie)
+                .get()
+                .build();
+        //3.将request封装成call
+        Call call = okHttpClient.newCall(request);
+        //4.执行call
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure( Call call, IOException e ) {
+                Looper.prepare();
+                Toast.makeText(LockInfoActivity.this, msg, Toast.LENGTH_SHORT).show();
+                Looper.loop();
+            }
+            @Override
+            public void onResponse( Call call, Response response ) throws IOException {
+                res = response.body().string();
+                JSONObject jsonObject = JSON.parseObject(res);
+                msg = jsonObject.getString("msg");
+                state = jsonObject.getString("state");
+                if (state.equals("ok")) {
+                    Looper.prepare();
+                    Toast.makeText(LockInfoActivity.this, msg, Toast.LENGTH_SHORT).show();
+                    Looper.loop();
+                } else {
+                    Looper.prepare();
+                    Toast.makeText(LockInfoActivity.this, msg, Toast.LENGTH_SHORT).show();
+                    Looper.loop();
+                }
+            }
+
+        });
     }
 }

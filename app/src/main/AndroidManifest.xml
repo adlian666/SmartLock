@@ -42,6 +42,7 @@
         android:roundIcon="@mipmap/lockclose"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+
         >
         <service
             android:name="com.baidu.location.f"

@@ -68,9 +68,13 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -163,8 +167,26 @@ public class HomeFragment extends Fragment {
             } else {//6.0以下则执行程序
                 initLocation();
             }
+            list.clear();
             okHttp();
             mapOkHttp();
+           /*  Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.HOUR_OF_DAY, 23); // 控制时
+            calendar.set(Calendar.MINUTE, 0);    // 控制分
+            calendar.set(Calendar.SECOND, 0);    // 控制秒
+
+           Date time = calendar.getTime();
+                Timer timer = new Timer();
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        list.clear();
+                        okHttp();
+
+                        Log.i("HomeFragment", "1");
+                    }
+                }, time,1000 * 10);*/
+
             //切换模式的按钮点击事件
             ibtn_change.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -329,7 +351,7 @@ public class HomeFragment extends Fragment {
 
                 @Override
                 public void onMapStatusChangeFinish( MapStatus mapStatus ) {
-                    Log.i("TAG9999", "结束");
+
                     // initPoint();
                     mBaiduMap.clear();
                     final float zoom = mBaiduMap.getMapStatus().zoom;
@@ -391,9 +413,9 @@ public class HomeFragment extends Fragment {
         }
         return false;
     }
-
+//获取屏幕内的锁
     private void mapOkHttp() {
-
+count();
         //1.拿到httpClient对象
         OkHttpClient okHttpClient = new OkHttpClient();
         Request.Builder builder = new Request.Builder();

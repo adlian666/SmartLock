@@ -15,6 +15,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -25,6 +26,7 @@ import com.lishang.smartlock.MapFragment;
 import com.lishang.smartlock.R;
 import com.lishang.smartlock.smartlock.HomeFragment;
 import com.lishang.smartlock.smartlock.MsgFragment;
+import com.lishang.smartlock.smartlock.Utils.MainViewPager;
 import com.lishang.smartlock.smartlock.adapter.HomeFragmentPagerAdapter;
 import com.lishang.smartlock.smartlock.badgenumberlibrary.BadgeNumberManager;
 
@@ -39,7 +41,7 @@ import static com.lishang.smartlock.MapFragment.*;
 public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, ViewPager.OnPageChangeListener {
 
     private HomeFragmentPagerAdapter mAdapter;
-    private ViewPager vpager;
+    private MainViewPager vpager;
     private RadioButton tab_btn_home, tab_btn_home1;
     private RadioButton tab_btn_msg, tab_btn_my1;
     private RadioButton tab_btn_my, tab_btn_msg1;
@@ -82,7 +84,8 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         tab_btn_my1 = findViewById(R.id.tab_btn_my1);
         tab_btn_home1 = findViewById(R.id.tab_btn_home1);
         tab_btn_home = findViewById(R.id.tab_btn_home);
-        vpager = findViewById(R.id.ly_content);
+        vpager = (MainViewPager) findViewById(R.id.ly_content);
+        vpager.setScanScroll(false);
         vpager.setAdapter(mAdapter);
         vpager.setCurrentItem(0);
         vpager.addOnPageChangeListener(this);
@@ -104,6 +107,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
                 tab_btn_my.setChecked(true);
             }
         });
+
     }
 
 
@@ -154,6 +158,15 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
             }
         }
     }
+    @Override
+    public boolean onTouchEvent(MotionEvent arg0) {
+        return false;
+    }
+
+   /* @Override
+    public boolean onInterceptTouchEvent(MotionEvent arg0) {
+        return false;
+    }*/
 
     @Override
     public boolean onKeyDown( int keyCode, KeyEvent event ) {
